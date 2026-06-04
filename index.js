@@ -1,3 +1,19 @@
+/* AUDIO */
+const audio = document.getElementById('bg-music');
+audio.volume = 0.3;
+audio.currentTime = 33;
+
+// Handle autoplay - browsers block autoplay by default
+document.addEventListener('DOMContentLoaded', () => {
+  audio.play().catch(error => {
+    console.log('Autoplay blocked, waiting for user interaction');
+    // Add click listener to start audio on first user interaction
+    document.addEventListener('click', () => {
+      audio.play();
+    }, { once: true });
+  });
+});
+
 /* PARTICLE SYSTEM */
 const canvas = document.getElementById('particle-canvas');
 const ctx = canvas.getContext('2d');
